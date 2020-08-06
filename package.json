@@ -61,7 +61,7 @@
         "start": "node scripts/start.js",
         "build": "node scripts/build.js",
         "test": "node scripts/test.js --env=jsdom",
-        "format": "eslint src/**/*.{jsx,js} --fix"
+        "format": "prettier src/**/*.{js,css} --write && eslint src/**/*.{js} --fix"
     },
     "jest": {
         "collectCoverageFrom": [
@@ -108,7 +108,10 @@
             "react-app"
         ],
         "rules": {
-            "react/jsx-indent": ["error", 4]
+            "react/jsx-indent": [
+                "error",
+                4
+            ]
         }
     },
     "husky": {
