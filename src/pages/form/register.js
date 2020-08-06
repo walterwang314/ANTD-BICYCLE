@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
     Card,
     Form,
@@ -14,8 +14,9 @@ import {
     Icon,
     message,
     InputNumber,
-} from 'antd';
-import moment from 'moment';
+} from "antd";
+import moment from "moment";
+
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 const Option = Select.Option;
@@ -33,16 +34,16 @@ class FormRegister extends React.Component {
 
     getBase64 = (img, callback) => {
         const reader = new FileReader();
-        reader.addEventListener('load', () => callback(reader.result));
+        reader.addEventListener("load", () => callback(reader.result));
         reader.readAsDataURL(img);
     };
 
     handleChange = (info) => {
-        if (info.file.status === 'uploading') {
+        if (info.file.status === "uploading") {
             this.setState({ loading: true });
             return;
         }
-        if (info.file.status === 'done') {
+        if (info.file.status === "done") {
             // Get this url from response in real world.
             this.getBase64(info.file.originFileObj, (imageUrl) =>
                 this.setState({
@@ -83,19 +84,19 @@ class FormRegister extends React.Component {
                 <Card title="注册表单">
                     <Form layout="horizontal">
                         <FormItem label="用户名" {...formItemLayout}>
-                            {getFieldDecorator('userName', {
-                                initialValue: '',
+                            {getFieldDecorator("userName", {
+                                initialValue: "",
                                 rules: [
                                     {
                                         required: true,
-                                        message: '用户名不能为空',
+                                        message: "用户名不能为空",
                                     },
                                 ],
                             })(<Input placeholder="请输入用户名" />)}
                         </FormItem>
                         <FormItem label="密码" {...formItemLayout}>
-                            {getFieldDecorator('userPwd', {
-                                initialValue: '',
+                            {getFieldDecorator("userPwd", {
+                                initialValue: "",
                             })(
                                 <Input
                                     type="password"
@@ -104,8 +105,8 @@ class FormRegister extends React.Component {
                             )}
                         </FormItem>
                         <FormItem label="性别" {...formItemLayout}>
-                            {getFieldDecorator('sex', {
-                                initialValue: '1',
+                            {getFieldDecorator("sex", {
+                                initialValue: "1",
                             })(
                                 <RadioGroup>
                                     <Radio value="1">男</Radio>
@@ -114,13 +115,13 @@ class FormRegister extends React.Component {
                             )}
                         </FormItem>
                         <FormItem label="年龄" {...formItemLayout}>
-                            {getFieldDecorator('age', {
+                            {getFieldDecorator("age", {
                                 initialValue: 18,
                             })(<InputNumber />)}
                         </FormItem>
                         <FormItem label="当前状态" {...formItemLayout}>
-                            {getFieldDecorator('state', {
-                                initialValue: '2',
+                            {getFieldDecorator("state", {
+                                initialValue: "2",
                             })(
                                 <Select>
                                     <Option value="1">咸鱼一条</Option>
@@ -132,8 +133,8 @@ class FormRegister extends React.Component {
                             )}
                         </FormItem>
                         <FormItem label="爱好" {...formItemLayout}>
-                            {getFieldDecorator('interest', {
-                                initialValue: ['2', '5'],
+                            {getFieldDecorator("interest", {
+                                initialValue: ["2", "5"],
                             })(
                                 <Select mode="multiple">
                                     <Option value="1">游泳</Option>
@@ -148,14 +149,14 @@ class FormRegister extends React.Component {
                             )}
                         </FormItem>
                         <FormItem label="是否已婚" {...formItemLayout}>
-                            {getFieldDecorator('isMarried', {
-                                valuePropName: 'checked',
+                            {getFieldDecorator("isMarried", {
+                                valuePropName: "checked",
                                 initialValue: true,
                             })(<Switch />)}
                         </FormItem>
                         <FormItem label="生日" {...formItemLayout}>
-                            {getFieldDecorator('birthday', {
-                                initialValue: moment('2018-08-08'),
+                            {getFieldDecorator("birthday", {
+                                initialValue: moment("2018-08-08"),
                             })(
                                 <DatePicker
                                     showTime
@@ -164,15 +165,15 @@ class FormRegister extends React.Component {
                             )}
                         </FormItem>
                         <FormItem label="联系地址" {...formItemLayout}>
-                            {getFieldDecorator('address', {
-                                initialValue: '北京市海淀区奥林匹克公园',
-                            })(<TextArea autosize={rowObject} />)}
+                            {getFieldDecorator("address", {
+                                initialValue: "北京市海淀区奥林匹克公园",
+                            })(<TextArea autoSize={rowObject} />)}
                         </FormItem>
                         <FormItem label="早起时间" {...formItemLayout}>
-                            {getFieldDecorator('time')(<TimePicker />)}
+                            {getFieldDecorator("time")(<TimePicker />)}
                         </FormItem>
                         <FormItem label="头像" {...formItemLayout}>
-                            {getFieldDecorator('userImg')(
+                            {getFieldDecorator("userImg")(
                                 <Upload
                                     listType="picture-card"
                                     showUploadList={false}
@@ -188,7 +189,7 @@ class FormRegister extends React.Component {
                             )}
                         </FormItem>
                         <FormItem {...offsetLayout}>
-                            {getFieldDecorator('userImg')(
+                            {getFieldDecorator("userImg")(
                                 <Checkbox>
                                     我已阅读过<a href="#read">慕课协议</a>
                                 </Checkbox>

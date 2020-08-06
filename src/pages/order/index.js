@@ -1,8 +1,9 @@
-import React from 'react';
-import { Card, Button, Table, Form, Modal, message } from 'antd';
-import axios from '../../axios';
-import Utils from '../../utils/utils';
-import BaseForm from '../../components/BaseForm';
+import React from "react";
+import { Card, Button, Table, Form, Modal, message } from "antd";
+import axios from "../../axios";
+import Utils from "../../utils/utils";
+import BaseForm from "../../components/BaseForm";
+
 const FormItem = Form.Item;
 export default class Order extends React.Component {
     state = {
@@ -14,33 +15,33 @@ export default class Order extends React.Component {
     };
     formList = [
         {
-            type: 'SELECT',
-            label: '城市',
-            field: 'city',
-            placeholder: '全部',
-            initialValue: '1',
+            type: "SELECT",
+            label: "城市",
+            field: "city",
+            placeholder: "全部",
+            initialValue: "1",
             width: 80,
             list: [
-                { id: '0', name: '全部' },
-                { id: '1', name: '北京' },
-                { id: '2', name: '天津' },
-                { id: '3', name: '上海' },
+                { id: "0", name: "全部" },
+                { id: "1", name: "北京" },
+                { id: "2", name: "天津" },
+                { id: "3", name: "上海" },
             ],
         },
         {
-            type: '时间查询',
+            type: "时间查询",
         },
         {
-            type: 'SELECT',
-            label: '订单状态',
-            field: 'order_status',
-            placeholder: '全部',
-            initialValue: '1',
+            type: "SELECT",
+            label: "订单状态",
+            field: "order_status",
+            placeholder: "全部",
+            initialValue: "1",
             width: 80,
             list: [
-                { id: '0', name: '全部' },
-                { id: '1', name: '进行中' },
-                { id: '2', name: '结束行程' },
+                { id: "0", name: "全部" },
+                { id: "1", name: "进行中" },
+                { id: "2", name: "结束行程" },
             ],
         },
     ];
@@ -56,7 +57,7 @@ export default class Order extends React.Component {
         let _this = this;
         axios
             .ajax({
-                url: '/order/list',
+                url: "/order/list.json",
                 data: {
                     params: this.params,
                 },
@@ -80,14 +81,14 @@ export default class Order extends React.Component {
         let item = this.state.selectedItem;
         if (!item) {
             Modal.info({
-                title: '信息',
-                content: '请选择一条订单进行结束',
+                title: "信息",
+                content: "请选择一条订单进行结束",
             });
             return;
         }
         axios
             .ajax({
-                url: '/order/ebike_info',
+                url: "/order/ebike_info.json",
                 data: {
                     params: {
                         orderId: item.id,
@@ -109,7 +110,7 @@ export default class Order extends React.Component {
         let item = this.state.selectedItem;
         axios
             .ajax({
-                url: '/order/finish_order',
+                url: "/order/finish_order.json",
                 data: {
                     params: {
                         orderId: item.id,
@@ -118,7 +119,7 @@ export default class Order extends React.Component {
             })
             .then((res) => {
                 if (res.code === 0) {
-                    message.success('订单结束成功');
+                    message.success("订单结束成功");
                     this.setState({
                         orderConfirmVisble: false,
                     });
@@ -138,61 +139,61 @@ export default class Order extends React.Component {
         let item = this.state.selectedItem;
         if (!item) {
             Modal.info({
-                title: '信息',
-                content: '请先选择一条订单',
+                title: "信息",
+                content: "请先选择一条订单",
             });
             return;
         }
-        window.open(`/#/common/order/detail/${item.id}`, '_blank');
+        window.open(`/#/common/order/detail/${item.id}`, "_blank");
     };
     render() {
         const columns = [
             {
-                title: '订单编号',
-                dataIndex: 'order_sn',
+                title: "订单编号",
+                dataIndex: "order_sn",
             },
             {
-                title: '车辆编号',
-                dataIndex: 'bike_sn',
+                title: "车辆编号",
+                dataIndex: "bike_sn",
             },
             {
-                title: '用户名',
-                dataIndex: 'user_name',
+                title: "用户名",
+                dataIndex: "user_name",
             },
             {
-                title: '手机号',
-                dataIndex: 'mobile',
+                title: "手机号",
+                dataIndex: "mobile",
             },
             {
-                title: '里程',
-                dataIndex: 'distance',
+                title: "里程",
+                dataIndex: "distance",
                 render(distance) {
-                    return distance / 1000 + 'Km';
+                    return distance / 1000 + "Km";
                 },
             },
             {
-                title: '行驶时长',
-                dataIndex: 'total_time',
+                title: "行驶时长",
+                dataIndex: "total_time",
             },
             {
-                title: '状态',
-                dataIndex: 'status',
+                title: "状态",
+                dataIndex: "status",
             },
             {
-                title: '开始时间',
-                dataIndex: 'start_time',
+                title: "开始时间",
+                dataIndex: "start_time",
             },
             {
-                title: '结束时间',
-                dataIndex: 'end_time',
+                title: "结束时间",
+                dataIndex: "end_time",
             },
             {
-                title: '订单金额',
-                dataIndex: 'total_fee',
+                title: "订单金额",
+                dataIndex: "total_fee",
             },
             {
-                title: '实付金额',
-                dataIndex: 'user_pay',
+                title: "实付金额",
+                dataIndex: "user_pay",
             },
         ];
         const formItemLayout = {
@@ -201,7 +202,7 @@ export default class Order extends React.Component {
         };
         const selectedRowKeys = this.state.selectedRowKeys;
         const rowSelection = {
-            type: 'radio',
+            type: "radio",
             selectedRowKeys,
         };
         return (
@@ -256,7 +257,7 @@ export default class Order extends React.Component {
                             {this.state.orderInfo.bike_sn}
                         </FormItem>
                         <FormItem label="剩余电量" {...formItemLayout}>
-                            {this.state.orderInfo.battery + '%'}
+                            {this.state.orderInfo.battery + "%"}
                         </FormItem>
                         <FormItem label="行程开始时间" {...formItemLayout}>
                             {this.state.orderInfo.start_time}

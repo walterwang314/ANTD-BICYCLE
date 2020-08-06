@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Tabs, message, Icon } from 'antd';
 import './ui.less';
 const TabPane = Tabs.TabPane;
+
 export default class Buttons extends React.Component {
     newTabIndex = 0;
     handleCallback = (key) => {

@@ -1,21 +1,24 @@
-import React from 'react';
-import { Select } from 'antd';
+import React from "react";
+import { Select } from "antd";
 const Option = Select.Option;
+
 export default {
     formateDate(time) {
-        if (!time) return '';
+        if (!time) {
+            return "";
+        }
         let date = new Date(time);
         return (
             date.getFullYear() +
-            '-' +
+            "-" +
             (date.getMonth() + 1) +
-            '-' +
+            "-" +
             date.getDate() +
-            ' ' +
+            " " +
             date.getHours() +
-            ':' +
+            ":" +
             date.getMinutes() +
-            ':' +
+            ":" +
             date.getSeconds()
         );
     },
@@ -34,7 +37,7 @@ export default {
         };
     },
     // 格式化金额,单位:分(eg:430分=4.30元)
-    formatFee(fee, suffix = '') {
+    formatFee(fee, suffix = "") {
         if (!fee) {
             return 0;
         }
@@ -46,22 +49,22 @@ export default {
             return 0;
         }
         if (mileage >= 1000) {
-            text = text || ' km';
+            text = text || " km";
             return Math.floor(mileage / 100) / 10 + text;
         } else {
-            text = text || ' m';
+            text = text || " m";
             return mileage + text;
         }
     },
     // 隐藏手机号中间4位
     formatPhone(phone) {
-        phone += '';
-        return phone.replace(/(\d{3})\d*(\d{4})/g, '$1***$2');
+        phone += "";
+        return phone.replace(/(\d{3})\d*(\d{4})/g, "$1***$2");
     },
     // 隐藏身份证号中11位
     formatIdentity(number) {
-        number += '';
-        return number.replace(/(\d{3})\d*(\d{4})/g, '$1***********$2');
+        number += "";
+        return number.replace(/(\d{3})\d*(\d{4})/g, "$1***********$2");
     },
     getOptionList(data) {
         if (!data) {
@@ -70,7 +73,10 @@ export default {
         let options = []; //[<Option value="0" key="all_key">全部</Option>];
         data.forEach((item) => {
             options.push(
-                <Option value={item.id} key={item.id}>
+                <Option
+                    value={parseInt(item.id, 10)}
+                    key={parseInt(item.id, 10)}
+                >
                     {item.name}
                 </Option>
             );

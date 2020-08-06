@@ -1,5 +1,5 @@
 {
-    "name": "imoocmanager",
+    "name": "antd-bicycle",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -61,7 +61,7 @@
         "start": "node scripts/start.js",
         "build": "node scripts/build.js",
         "test": "node scripts/test.js --env=jsdom",
-        "format": "prettier src/**/**/*.{js,css,less} --write && eslint src/**/**/*.{js} --fix"
+        "format": "prettier src/**/**/**/**/*.{js,css,less} --write && eslint src/**/**/**/**/*.{js} --fix"
     },
     "jest": {
         "collectCoverageFrom": [
@@ -108,10 +108,8 @@
             "react-app"
         ],
         "rules": {
-            "react/jsx-indent": [
-                "error",
-                4
-            ]
+            "react/jsx-indent": ["error", 4, { "ignoredNodes": ["JSXElement *"] }],
+            "eqeqeq": "off"
         }
     },
     "husky": {

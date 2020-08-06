@@ -1,7 +1,7 @@
-import React from 'react';
-import { Card } from 'antd';
-import axios from '../../axios';
-import './detail.less';
+import React from "react";
+import { Card } from "antd";
+import axios from "../../axios";
+import "./detail.less";
 export default class Order extends React.Component {
     state = {};
 
@@ -15,7 +15,7 @@ export default class Order extends React.Component {
     getDetailInfo = (orderId) => {
         axios
             .ajax({
-                url: '/order/detail',
+                url: "/order/detail.json",
                 data: {
                     params: {
                         orderId: orderId,
@@ -33,7 +33,7 @@ export default class Order extends React.Component {
     };
 
     renderMap = (result) => {
-        this.map = new window.BMap.Map('orderDetailMap');
+        this.map = new window.BMap.Map("orderDetailMap");
         // this.map.centerAndZoom('北京',11);
         // 添加地图控件
         this.addMapControl();
@@ -60,14 +60,14 @@ export default class Order extends React.Component {
 
     // 绘制用户的行驶路线
     drawBikeRoute = (positionList) => {
-        let startPoint = '';
-        let endPoint = '';
+        let startPoint = "";
+        let endPoint = "";
         if (positionList.length > 0) {
             let first = positionList[0];
             let last = positionList[positionList.length - 1];
             startPoint = new window.BMap.Point(first.lon, first.lat);
             let startIcon = new window.BMap.Icon(
-                '/assets/start_point.png',
+                "/assets/start_point.png",
                 new window.BMap.Size(36, 42),
                 {
                     imageSize: new window.BMap.Size(36, 42),
@@ -82,7 +82,7 @@ export default class Order extends React.Component {
 
             endPoint = new window.BMap.Point(last.lon, last.lat);
             let endIcon = new window.BMap.Icon(
-                '/assets/end_point.png',
+                "/assets/end_point.png",
                 new window.BMap.Size(36, 42),
                 {
                     imageSize: new window.BMap.Size(36, 42),
@@ -100,7 +100,7 @@ export default class Order extends React.Component {
             }
 
             let polyline = new window.BMap.Polyline(trackPoint, {
-                strokeColor: '#1869AD',
+                strokeColor: "#1869AD",
                 strokeWeight: 3,
                 strokeOpacity: 1,
             });
@@ -119,10 +119,10 @@ export default class Order extends React.Component {
         }
         // 绘制服务区
         let polygon = new window.BMap.Polygon(trackPoint, {
-            strokeColor: '#CE0000',
+            strokeColor: "#CE0000",
             strokeWeight: 4,
             strokeOpacity: 1,
-            fillColor: '#ff8605',
+            fillColor: "#ff8605",
             fillOpacity: 0.4,
         });
         this.map.addOverlay(polygon);
@@ -140,7 +140,7 @@ export default class Order extends React.Component {
                             <li>
                                 <div className="detail-form-left">用车模式</div>
                                 <div className="detail-form-content">
-                                    {info.mode === 1 ? '服务区' : '停车点'}
+                                    {info.mode === 1 ? "服务区" : "停车点"}
                                 </div>
                             </li>
                             <li>

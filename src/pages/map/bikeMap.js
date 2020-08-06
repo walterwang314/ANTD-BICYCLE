@@ -1,7 +1,7 @@
-import React from 'react';
-import { Card } from 'antd';
-import axios from '../../axios/index';
-import BaseForm from '../../components/BaseForm';
+import React from "react";
+import { Card } from "antd";
+import axios from "../../axios/index";
+import BaseForm from "../../components/BaseForm";
 export default class Order extends React.Component {
     state = {
         bikeInfo: {},
@@ -12,22 +12,22 @@ export default class Order extends React.Component {
     // 表单封装，通过构建表单对象，在BaseForm中进行统一渲染
     formList = [
         {
-            type: '城市',
+            type: "城市",
         },
         {
-            type: '时间查询',
+            type: "时间查询",
         },
         {
-            type: 'SELECT',
-            label: '订单状态',
-            field: 'order_status',
-            placeholder: '全部',
-            initialValue: '0',
+            type: "SELECT",
+            label: "订单状态",
+            field: "order_status",
+            placeholder: "全部",
+            initialValue: "0",
             width: 150,
             list: [
-                { id: '0', name: '全部' },
-                { id: '1', name: '进行中' },
-                { id: '3', name: '行程结束' },
+                { id: "0", name: "全部" },
+                { id: "1", name: "进行中" },
+                { id: "3", name: "行程结束" },
             ],
         },
     ];
@@ -40,7 +40,7 @@ export default class Order extends React.Component {
     requestList = () => {
         axios
             .ajax({
-                url: '/map/bike_list',
+                url: "/map/bike_list.json",
                 data: {
                     params: this.params,
                 },
@@ -71,10 +71,10 @@ export default class Order extends React.Component {
     // 渲染地图
     renderMap = (res) => {
         let list = res.route_list;
-        this.map = new window.BMap.Map('container', { enableMapClick: false });
-        let gps1 = list[0].split(',');
+        this.map = new window.BMap.Map("container", { enableMapClick: false });
+        let gps1 = list[0].split(",");
         let startPoint = new window.BMap.Point(gps1[0], gps1[1]);
-        let gps2 = list[list.length - 1].split(',');
+        let gps2 = list[list.length - 1].split(",");
         let endPoint = new window.BMap.Point(gps2[0], gps2[1]);
 
         this.map.centerAndZoom(endPoint, 11);
@@ -82,7 +82,7 @@ export default class Order extends React.Component {
 
         //添加起始图标
         let startPointIcon = new window.BMap.Icon(
-            '/assets/start_point.png',
+            "/assets/start_point.png",
             new window.BMap.Size(36, 42),
             {
                 imageSize: new window.BMap.Size(36, 42),
@@ -96,7 +96,7 @@ export default class Order extends React.Component {
         this.map.addOverlay(bikeMarkerStart);
 
         let endPointIcon = new window.BMap.Icon(
-            '/assets/end_point.png',
+            "/assets/end_point.png",
             new window.BMap.Size(36, 42),
             {
                 imageSize: new window.BMap.Size(36, 42),
@@ -110,13 +110,13 @@ export default class Order extends React.Component {
 
         let routeList = [];
         list.forEach((item) => {
-            let p = item.split(',');
+            let p = item.split(",");
             let point = new window.BMap.Point(p[0], p[1]);
             routeList.push(point);
         });
         // 行驶路线
         var polyLine = new window.BMap.Polyline(routeList, {
-            strokeColor: '#ef4136',
+            strokeColor: "#ef4136",
             strokeWeight: 3,
             strokeOpacity: 1,
         });
@@ -131,7 +131,7 @@ export default class Order extends React.Component {
         });
         // 画线
         var polyServiceLine = new window.BMap.Polyline(servicePointist, {
-            strokeColor: '#ef4136',
+            strokeColor: "#ef4136",
             strokeWeight: 3,
             strokeOpacity: 1,
         });
@@ -140,7 +140,7 @@ export default class Order extends React.Component {
         // 添加地图中的自行车
         let bikeList = res.bike_list;
         let bikeIcon = new window.BMap.Icon(
-            '/assets/bike.jpg',
+            "/assets/bike.jpg",
             new window.BMap.Size(36, 42),
             {
                 imageSize: new window.BMap.Size(36, 42),
@@ -148,7 +148,7 @@ export default class Order extends React.Component {
             }
         );
         bikeList.forEach((item) => {
-            let p = item.split(',');
+            let p = item.split(",");
             let point = new window.BMap.Point(p[0], p[1]);
             var bikeMarker = new window.BMap.Marker(point, { icon: bikeIcon });
             this.map.addOverlay(bikeMarker);
