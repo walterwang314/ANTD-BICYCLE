@@ -29,7 +29,7 @@ class Header extends React.Component {
                     '&output=json&ak=3p49MVra6urFRGOT9s8UBWr2',
             })
             .then((res) => {
-                if (res.status == 'success') {
+                if (res.status === 'success') {
                     let data = res.results[0].weather_data[0];
                     this.setState({
                         dayPictureUrl: data.dayPictureUrl,
@@ -53,7 +53,7 @@ class Header extends React.Component {
                     )}
                     <Col span={menuType ? 18 : 24}>
                         <span>欢迎，{this.state.userName}</span>
-                        <a href="#">退出</a>
+                        <a href="#quit">退出</a>
                     </Col>
                 </Row>
                 {menuType ? (

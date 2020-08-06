@@ -1,8 +1,6 @@
 import React from 'react'
 import {Form, Input, Button} from 'antd'
-import axios from '../../axios/index'
 import Footer from '../../components/Footer'
-import Utils from '../../utils/utils'
 import './index.less'
 const FormItem = Form.Item;
 
@@ -37,7 +35,7 @@ export default class Login extends React.Component {
                                 </div>
                             </div>
                             <div className="title">慕课欢迎你</div>
-                            <LoginForm ref="login" loginSubmit={this.loginReq}/>
+                            <CreateLoginForm ref="login" loginSubmit={this.loginReq}/>
                         </div>
                     </div>
                 </div>
@@ -112,4 +110,4 @@ class LoginForm extends React.Component {
         )
     }
 }
-LoginForm = Form.create({})(LoginForm);
+const CreateLoginForm = Form.create({})(LoginForm);

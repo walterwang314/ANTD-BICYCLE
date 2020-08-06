@@ -20,10 +20,8 @@ export default class Buttons extends React.Component {
             title: '确认？',
             content: '你确定你学会了React了吗？',
             onOk() {
-                console.log('Ok');
             },
             onCancel() {
-                console.log('Cancel');
             },
         });
     };

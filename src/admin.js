@@ -5,7 +5,6 @@ import Footer from './components/Footer'
 import { connect } from 'react-redux'
 import NavLeft from './components/NavLeft'
 import './style/common.less'
-import Home from './pages/home'
 class Admin extends React.Component{
 
     render(){
