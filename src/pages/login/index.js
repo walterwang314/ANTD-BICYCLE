@@ -8,7 +8,6 @@ export default class Login extends React.Component {
     state = {};
 
     componentDidMount() {//每次进入登录页清除之前的登录信息
-        
     }
 
     loginReq = (params) => {
