@@ -219,12 +219,14 @@ export default class User extends React.Component {
                     <Button
                         type="primary"
                         icon="plus"
-                        onClick={() => this.handleOperator('create')}>
+                        onClick={() => this.handleOperator('create')}
+                    >
                         创建员工
                     </Button>
                     <Button
                         icon="edit"
-                        onClick={() => this.handleOperator('edit')}>
+                        onClick={() => this.handleOperator('edit')}
+                    >
                         编辑员工
                     </Button>
                     <Button onClick={() => this.handleOperator('detail')}>
@@ -233,7 +235,8 @@ export default class User extends React.Component {
                     <Button
                         type="danger"
                         icon="delete"
-                        onClick={() => this.handleOperator('delete')}>
+                        onClick={() => this.handleOperator('delete')}
+                    >
                         删除员工
                     </Button>
                 </Card>
@@ -257,7 +260,8 @@ export default class User extends React.Component {
                             isVisible: false,
                             userInfo: '',
                         });
-                    }}>
+                    }}
+                >
                     <CreateUserForm
                         userInfo={this.state.userInfo}
                         type={this.state.type}

@@ -61,7 +61,7 @@
         "start": "node scripts/start.js",
         "build": "node scripts/build.js",
         "test": "node scripts/test.js --env=jsdom",
-        "format": "prettier src/**/*.{js,css} --write && eslint src/**/*.{js} --fix"
+        "format": "prettier src/**/**/*.{js,css,less} --write && eslint src/**/**/*.{js} --fix"
     },
     "jest": {
         "collectCoverageFrom": [
@@ -124,7 +124,7 @@
             "prettier --write",
             "eslint --fix"
         ],
-        "*.{css,md}": [
+        "*.{css,less,md}": [
             "prettier --write"
         ]
     },

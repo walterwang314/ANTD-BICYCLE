@@ -30,7 +30,8 @@ export default class Gallery extends React.Component {
                             src={'/gallery/' + item}
                             onClick={() => this.openGallery(item)}
                         />
-                    }>
+                    }
+                >
                     <Card.Meta title="React Admin" description="I Love Imooc" />
                 </Card>
             ))
@@ -54,7 +55,8 @@ export default class Gallery extends React.Component {
                             visible: false,
                         });
                     }}
-                    footer={null}>
+                    footer={null}
+                >
                     {
                         <img
                             src={this.state.currentImg}

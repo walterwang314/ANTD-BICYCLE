@@ -1,27 +1,26 @@
-import React from 'react'
-import {Button,Card,Modal} from 'antd'
-import {Editor} from 'react-draft-wysiwyg'
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import draftjs from 'draftjs-to-html'
-export default class RichText extends React.Component{
-
+import React from 'react';
+import { Button, Card, Modal } from 'antd';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import draftjs from 'draftjs-to-html';
+export default class RichText extends React.Component {
     state = {
-        showRichText:false,
+        showRichText: false,
         editorContent: '',
         editorState: '',
     };
 
-    handleClearContent = ()=>{
+    handleClearContent = () => {
         this.setState({
-            editorState:''
-        })
-    }
+            editorState: '',
+        });
+    };
 
-    handleGetText = ()=>{
+    handleGetText = () => {
         this.setState({
-            showRichText:true
-        })
-    }
+            showRichText: true,
+        });
+    };
 
     onEditorChange = (editorContent) => {
         this.setState({
@@ -31,17 +30,21 @@ export default class RichText extends React.Component{
 
     onEditorStateChange = (editorState) => {
         this.setState({
-            editorState
+            editorState,
         });
     };
 
-    render(){
-        const { editorContent, editorState } = this.state;
+    render() {
+        const { editorState } = this.state;
         return (
             <div>
-                <Card style={{marginTop:10}}>
-                    <Button type="primary" onClick={this.handleClearContent}>清空内容</Button>
-                    <Button type="primary" onClick={this.handleGetText}>获取HTML文本</Button>
+                <Card style={{ marginTop: 10 }}>
+                    <Button type="primary" onClick={this.handleClearContent}>
+                        清空内容
+                    </Button>
+                    <Button type="primary" onClick={this.handleGetText}>
+                        获取HTML文本
+                    </Button>
                 </Card>
                 <Card title="富文本编辑器">
                     <Editor
@@ -53,10 +56,10 @@ export default class RichText extends React.Component{
                 <Modal
                     title="富文本"
                     visible={this.state.showRichText}
-                    onCancel={()=>{
+                    onCancel={() => {
                         this.setState({
-                            showRichText:false
-                        })
+                            showRichText: false,
+                        });
                     }}
                     footer={null}
                 >

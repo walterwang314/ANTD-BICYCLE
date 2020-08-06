@@ -1,13 +1,14 @@
-import React from 'react'
-import {Form, Input, Button} from 'antd'
-import Footer from '../../components/Footer'
-import './index.less'
+import React from 'react';
+import { Form, Input, Button } from 'antd';
+import Footer from '../../components/Footer';
+import './index.less';
 const FormItem = Form.Item;
 
 export default class Login extends React.Component {
     state = {};
 
-    componentDidMount() {//每次进入登录页清除之前的登录信息
+    componentDidMount() {
+        //每次进入登录页清除之前的登录信息
     }
 
     loginReq = (params) => {
@@ -19,35 +20,47 @@ export default class Login extends React.Component {
             <div className="login-page">
                 <div className="login-header">
                     <div className="logo">
-                        <img src="/assets/logo-ant.svg" alt="慕课后台管理系统"/>
+                        <img
+                            src="/assets/logo-ant.svg"
+                            alt="慕课后台管理系统"
+                        />
                         React全家桶+AntD 共享经济热门项目后台管理系统
                     </div>
                 </div>
                 <div className="login-content-wrap">
                     <div className="login-content">
-                        <div className="word">共享出行 <br />引领城市新经济</div>
+                        <div className="word">
+                            共享出行 <br />
+                            引领城市新经济
+                        </div>
                         <div className="login-box">
                             <div className="error-msg-wrap">
                                 <div
-                                    className={this.state.errorMsg?"show":""}>
+                                    className={
+                                        this.state.errorMsg ? 'show' : ''
+                                    }
+                                >
                                     {this.state.errorMsg}
                                 </div>
                             </div>
                             <div className="title">慕课欢迎你</div>
-                            <CreateLoginForm ref="login" loginSubmit={this.loginReq}/>
+                            <CreateLoginForm
+                                ref="login"
+                                loginSubmit={this.loginReq}
+                            />
                         </div>
                     </div>
                 </div>
-                <Footer/>
+                <Footer />
             </div>
-        )
+        );
     }
 }
 
 class LoginForm extends React.Component {
     state = {};
 
-    loginSubmit = (e)=> {
+    loginSubmit = (e) => {
         e && e.preventDefault();
         const _this = this;
         this.props.form.validateFieldsAndScroll((err, values) => {
@@ -55,7 +68,7 @@ class LoginForm extends React.Component {
                 var formValue = _this.props.form.getFieldsValue();
                 _this.props.loginSubmit({
                     username: formValue.username,
-                    password: formValue.password
+                    password: formValue.password,
                 });
             }
         });
@@ -86,27 +99,33 @@ class LoginForm extends React.Component {
             <Form className="login-form">
                 <FormItem>
                     {getFieldDecorator('username', {
-                        initialValue:'admin',
-                        rules: [{validator: this.checkUsername}]
-                    })(
-                        <Input placeholder="用户名"/>
-                    )}
+                        initialValue: 'admin',
+                        rules: [{ validator: this.checkUsername }],
+                    })(<Input placeholder="用户名" />)}
                 </FormItem>
                 <FormItem>
                     {getFieldDecorator('password', {
-                        initialValue:'admin',
-                        rules: [{validator: this.checkPassword}]
+                        initialValue: 'admin',
+                        rules: [{ validator: this.checkPassword }],
                     })(
-                        <Input type="password" placeholder="密码" wrappedcomponentref={(inst) => this.pwd = inst } />
+                        <Input
+                            type="password"
+                            placeholder="密码"
+                            wrappedcomponentref={(inst) => (this.pwd = inst)}
+                        />
                     )}
                 </FormItem>
                 <FormItem>
-                    <Button type="primary" onClick={this.loginSubmit} className="login-form-button">
+                    <Button
+                        type="primary"
+                        onClick={this.loginSubmit}
+                        className="login-form-button"
+                    >
                         登录
                     </Button>
                 </FormItem>
             </Form>
-        )
+        );
     }
 }
 const CreateLoginForm = Form.create({})(LoginForm);
