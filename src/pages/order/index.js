@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Table, Form, Select, Modal, message } from 'antd';
+import { Card, Button, Table, Form, Modal, message } from 'antd';
 import axios from '../../axios';
 import Utils from '../../utils/utils';
 import BaseForm from '../../components/BaseForm';
